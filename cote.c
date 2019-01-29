@@ -1,5 +1,5 @@
-#define PROGRAM_TITLE "Demo for OpenGL"
-#define DISPLAY_INFO "First OpenGL Program"
+#define PROGRAM_TITLE "Vincent Cote Assignment 1"
+#define DISPLAY_INFO "First OpenGL Program - Assn 1"
 
 #include <stdlib.h>  // Useful for the following includes.
 #include <stdio.h>    
@@ -44,7 +44,7 @@ void CallBackRenderScene(void)
    glMatrixMode(GL_MODELVIEW);
 
    // Reset to 0,0,0; no rotation, no scaling.
-   glLoadIdentity(); 
+   glLoadIdentity();
 
    // Move the object back from the screen.
    glTranslatef(0.0f,0.0f,Z_Off);
@@ -57,22 +57,40 @@ void CallBackRenderScene(void)
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
    // OK, let's start drawing our planer quads.
-   glBegin(GL_QUADS); 
+   glBegin(GL_QUADS);
 
    // Far face.  Green, 50% opaque, non-uniform texture cooridinates.
    glNormal3f( 0.0f, 0.0f,-1.0f);
-   glColor4f(0.2,0.9,0.2,.5); 
+   glColor4f(0.2,0.9,0.2,.5);
 
-   glTexCoord2f(0.995f, 0.005f); glVertex3f(-1.0f, -1.0f, -1.3f);
-   glTexCoord2f(2.995f, 2.995f); glVertex3f(-1.0f,  1.0f, -1.3f);
-   glTexCoord2f(0.005f, 0.995f); glVertex3f( 1.0f,  1.0f, -1.3f);
-   glTexCoord2f(0.005f, 0.005f); glVertex3f( 1.0f, -1.0f, -1.3f);
+   glTexCoord2f(0.995f, 0.005f); glVertex3f(-1.0f, -1.0f, -1.0f);
+   glTexCoord2f(2.995f, 2.995f); glVertex3f(-1.0f,  1.0f, -1.0f);
+   glTexCoord2f(0.005f, 0.995f); glVertex3f( 1.0f,  1.0f, -1.0f);
+   glTexCoord2f(0.005f, 0.005f); glVertex3f( 1.0f, -1.0f, -1.0f);
 
-   // Right face.  Blue; 25% opaque   
+   // top face. Light blue
+   glNormal3f(0.0f, 0.0f,1.0f);
+   glColor4f(0.2,0.9,1.2,.5);
+
+   glTexCoord2f(0.995f, 0.005f); glVertex3f(-1.0f, 1.0f, -1.0f);
+   glTexCoord2f(2.995f, 2.995f); glVertex3f(1.0f,  1.0f, -1.0f);
+   glTexCoord2f(0.005f, 0.995f); glVertex3f( 1.0f,  1.0f, 1.0f);
+   glTexCoord2f(0.005f, 0.005f); glVertex3f( -1.0f, 1.0f, 1.0f);
+
+   // bottom face. Yellow
+   glNormal3f(0.0f, 0.0f,1.0f);
+   glColor4f(1.2,0.9,0.2,.5);
+
+   glTexCoord2f(0.995f, 0.005f); glVertex3f(-1.0f, -1.0f, -1.0f);
+   glTexCoord2f(2.995f, 2.995f); glVertex3f(1.0f,  -1.0f, -1.0f);
+   glTexCoord2f(0.005f, 0.995f); glVertex3f( 1.0f,  -1.0f, 1.0f);
+   glTexCoord2f(0.005f, 0.005f); glVertex3f( -1.0f, -1.0f, 1.0f);
+
+   // Right face.  Blue; 25% opaque
    glNormal3f( 1.0f, 0.0f, 0.0f);
    glColor4f(0.2,0.2,0.9,.25);
 
-   glTexCoord2f(0.995f, 0.005f); glVertex3f( 1.0f, -1.0f, -1.0f); 
+   glTexCoord2f(0.995f, 0.005f); glVertex3f( 1.0f, -1.0f, -1.0f);
    glTexCoord2f(0.995f, 0.995f); glVertex3f( 1.0f,  1.0f, -1.0f);
    glTexCoord2f(0.005f, 0.995f); glVertex3f( 1.0f,  1.0f,  1.0f);
    glTexCoord2f(0.005f, 0.005f); glVertex3f( 1.0f, -1.0f,  1.0f);
@@ -80,27 +98,27 @@ void CallBackRenderScene(void)
    // Front face; offset.  Multi-colored, 50% opaque.
    glNormal3f( 0.0f, 0.0f, 1.0f);
    glColor4f( 0.9f, 0.2f, 0.2f, 0.5f);
-   
-   glTexCoord2f( 0.005f, 0.005f); glVertex3f(-1.0f, -1.0f,  1.3f);
+
+   glTexCoord2f( 0.005f, 0.005f); glVertex3f(-1.0f, -1.0f,  1.0f);
    glColor4f( 0.2f, 0.9f, 0.2f, 0.5f);
-   glTexCoord2f( 0.995f, 0.005f); glVertex3f( 1.0f, -1.0f,  1.3f);
+   glTexCoord2f( 0.995f, 0.005f); glVertex3f( 1.0f, -1.0f,  1.0f);
    glColor4f( 0.2f, 0.2f, 0.9f, 0.5f);
-   glTexCoord2f( 0.995f, 0.995f); glVertex3f( 1.0f,  1.0f,  1.3f); 
+   glTexCoord2f( 0.995f, 0.995f); glVertex3f( 1.0f,  1.0f,  1.0f);
    glColor4f( 0.1f, 0.1f, 0.1f, 0.5f);
-   glTexCoord2f( 0.005f, 0.995f); glVertex3f(-1.0f,  1.0f,  1.3f);
+   glTexCoord2f( 0.005f, 0.995f); glVertex3f(-1.0f,  1.0f,  1.0f);
 
 
    // Left Face; offset.  Yellow, varying levels of opaque.
-   glNormal3f(-1.0f, 0.0f, 0.0f);  
+   glNormal3f(-1.0f, 0.0f, 0.0f);
    glColor4f(0.9,0.9,0.2,0.0);
-   
-   glTexCoord2f(0.005f, 0.005f); glVertex3f(-1.3f, -1.0f, -1.0f); 
+
+   glTexCoord2f(0.005f, 0.005f); glVertex3f(-1.0f, -1.0f, -1.0f);
    glColor4f(0.9,0.9,0.2,0.66);
-   glTexCoord2f(0.995f, 0.005f); glVertex3f(-1.3f, -1.0f,  1.0f);
+   glTexCoord2f(0.995f, 0.005f); glVertex3f(-1.0f, -1.0f,  1.0f);
    glColor4f(0.9,0.9,0.2,1.0);
-   glTexCoord2f(0.995f, 0.995f); glVertex3f(-1.3f,  1.0f,  1.0f);
+   glTexCoord2f(0.995f, 0.995f); glVertex3f(-1.0f,  1.0f,  1.0f);
    glColor4f(0.9,0.9,0.2,0.33);
-   glTexCoord2f(0.005f, 0.995f); glVertex3f(-1.3f,  1.0f, -1.0f);
+   glTexCoord2f(0.005f, 0.995f); glVertex3f(-1.0f,  1.0f, -1.0f);
 
    // All polygons have been drawn.
    glEnd();
@@ -108,7 +126,7 @@ void CallBackRenderScene(void)
    // Move back to the origin
    glLoadIdentity();
 
-   // We need to change the projection matrix for the text rendering.  
+   // We need to change the projection matrix for the text rendering.
    glMatrixMode(GL_PROJECTION);
 
    // But we like our current view too; so we save it here.
@@ -146,7 +164,7 @@ void CallBackRenderScene(void)
 ////////////////////////////////////////////////////////////
 // Callback function called when a normal key is pressed. //
 ////////////////////////////////////////////////////////////
-void CallBackKeyPressed(unsigned char key, int x, int y)
+void myCBKey(unsigned char key, int x, int y)
 {
    switch (key) {
       case 113: // q
@@ -154,45 +172,14 @@ void CallBackKeyPressed(unsigned char key, int x, int y)
 	 glutDestroyWindow(Window_ID);
 	 exit(1);
 	 break; // exit doesn't return, but anyway...
-      case 102: // f
-	 X_Speed=Y_Speed=0;
+      case 97: // a
+	      Z_Off -= 0.5f;
 	 break;
-      case 114: // r
-         X_Speed=-X_Speed;
-         Y_Speed=-Y_Speed;
+      case 122: // z
+         Z_Off += 0.5f;
       break;
    default:
       printf ("KP: No action for %d.\n", key);
-      break;
-    }
-}
-
-/////////////////////////////////////////////////////////////
-// Callback Function called when a special key is pressed. //
-/////////////////////////////////////////////////////////////
-void CallBackSpecialKeyPressed(int key, int x, int y)
-{
-   switch (key) {
-   case GLUT_KEY_PAGE_UP: // move the cube into the distance.
-      Z_Off -= 0.05f;
-      break;
-   case GLUT_KEY_PAGE_DOWN: // move the cube closer.
-      Z_Off += 0.05f;
-      break;
-   case GLUT_KEY_UP: // decrease x rotation speed;
-      X_Speed -= 0.01f;
-      break;
-   case GLUT_KEY_DOWN: // increase x rotation speed;
-      X_Speed += 0.01f;
-      break;
-   case GLUT_KEY_LEFT: // decrease y rotation speed;
-      Y_Speed -= 0.01f;
-      break;
-   case GLUT_KEY_RIGHT: // increase y rotation speed;
-      Y_Speed += 0.01f;
-      break;
-   default:
-      printf ("SKP: No action for %d.\n", key);
       break;
     }
 }
@@ -270,8 +257,7 @@ int main(int argc, char **argv)
 
    // Register and install the callback function for
    // Some keys and special keys.
-   glutKeyboardFunc(&CallBackKeyPressed);
-   glutSpecialFunc(&CallBackSpecialKeyPressed);
+   glutKeyboardFunc(&myCBKey);
 
    // OK, OpenGL's ready to go.  Let's call our own init function.
    MyInit(Window_Width, Window_Height);
@@ -287,6 +273,5 @@ int main(int argc, char **argv)
    // Now pass off control to OpenGL.
    glutMainLoop(); 
    // Never returns.
-   return 1; 
+   return 1;
 }
-
